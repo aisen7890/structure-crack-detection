@@ -42,7 +42,7 @@ async function setupCamera() {
     const stream = await navigator.mediaDevices.getUserMedia({
         'audio': false,
         'video': {
-          facingMode: 'user',
+          facingMode: 'environment', //user는 안쪽 카메라. environment는 바깥쪽 카메라.
           height: {ideal:500},
           width: {ideal: 500},
         },
