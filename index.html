@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="style.css">
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,22 +20,27 @@
 </head>
 
 <body>
-    <div>Teachable Machine Image Model</div>
-    <button type="button" onclick="init()">Start</button>
+    <h1 class="title">인공지능 균열위험도 판독기</h1>
+    <h2 class="subtitle">"자가진단을 통해 우리집이 안전한지 알아보아요.(아직 바닥은 못해요. ^ㅡ^)"</h2>
+    <h1 class="title">인공지능 지진균열위험도 판독기</h1>
+    <h2 class="subtitle">"지진으로 발생한 균열의 위험도를 판단할 수 있습니다."</h2>
+    <div class="image-upload-wrap">
+        <canvas id="facecanvas"></canvas>
 
-    <canvas id="facecanvas"></canvas>
-
-    <!-- Video that handles the browser access to the camera. The transforms mirror the feed -->
-
-    <video autoplay muted hidden playsinline id="video" style="
+        <!-- Video that handles the browser access to the camera. The transforms mirror the feed -->
+        <div id="file-upload-input">
+            <video autoplay muted hidden playsinline id="video" style="
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     width: auto;
     height: auto;">
-    </video>
+            </video>
+        </div>
+    </div>
+    <div class="image-title-wrap">
+        <button class="file-upload-btn" type="button" onclick="init()">시작하기!</button>
+    </div>
 
-
-    <div id="webcam-container"></div>
     <div id="label-container"></div>
     <div id="label-container2"></div>
     <div id="resultTitle"></div>
@@ -66,6 +74,9 @@
 
         // Load the image model and setup the webcam
         async function init() {
+            var button = document.getElementsByClassName("file-upload-btn");
+            button.innerHTML = "재시작!";
+
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
@@ -93,12 +104,12 @@
 
 
             //window.requestAnimationFrame(loop);
-            if(window.requestAnimationFrame){ window.requestAnimationFrame(loop);}
-            else if(window.webkitRequestAnimationFrame){ window.webkitRequestAnimationFrame(loop);}
-            else if(window.mozRequestAnimationFrame){ window.mozRequestAnimationFrame(loop);}
-            else if(window.oRequestAnimationFrame){ window.oRequestAnimationFrame(loop);}
-            else if(window.msRequestAnimationFrame){ window.msRequestAnimationFrame(loop);}
-            else { alert("지원하지 않는 브라우저!");}
+            if (window.requestAnimationFrame) { window.requestAnimationFrame(loop); }
+            else if (window.webkitRequestAnimationFrame) { window.webkitRequestAnimationFrame(loop); }
+            else if (window.mozRequestAnimationFrame) { window.mozRequestAnimationFrame(loop); }
+            else if (window.oRequestAnimationFrame) { window.oRequestAnimationFrame(loop); }
+            else if (window.msRequestAnimationFrame) { window.msRequestAnimationFrame(loop); }
+            else { alert("지원하지 않는 브라우저!"); }
 
             //document.getElementById("webcam-container").appendChild(webcam.canvas);
 
@@ -144,12 +155,12 @@
             await delay(2500); //시간 조절은 여기서.
             imgCanvas.remove();
             //window.requestAnimationFrame(loop);
-            if(window.requestAnimationFrame){ window.requestAnimationFrame(loop);}
-            else if(window.webkitRequestAnimationFrame){ window.webkitRequestAnimationFrame(loop);}
-            else if(window.mozRequestAnimationFrame){ window.mozRequestAnimationFrame(loop);}
-            else if(window.oRequestAnimationFrame){ window.oRequestAnimationFrame(loop);}
-            else if(window.msRequestAnimationFrame){ window.msRequestAnimationFrame(loop);}
-            else { alert("지원하지 않는 브라우저!");}
+            if (window.requestAnimationFrame) { window.requestAnimationFrame(loop); }
+            else if (window.webkitRequestAnimationFrame) { window.webkitRequestAnimationFrame(loop); }
+            else if (window.mozRequestAnimationFrame) { window.mozRequestAnimationFrame(loop); }
+            else if (window.oRequestAnimationFrame) { window.oRequestAnimationFrame(loop); }
+            else if (window.msRequestAnimationFrame) { window.msRequestAnimationFrame(loop); }
+            else { alert("지원하지 않는 브라우저!"); }
         }
 
 
@@ -337,7 +348,7 @@
             //return new Promise(resolve => {msg.onend = resolve;});
 
 
-
+/*
             var msg2 = new SpeechSynthesisUtterance();
             //msg2.voice = voices[12];
             msg2.text = resultExplain;
@@ -356,7 +367,7 @@
             //msg3.lang = 'ko-KR'; //필요 X
             window.speechSynthesis.speak(msg3);
             //return new Promise(resolve => {msg3.onend = resolve;});
-
+*/
 
 
 
@@ -437,10 +448,10 @@
 
         async function main() {
             // Set up front-facing camera
-            try{
-            await setupCamera();
-            video.play()
-            }catch{alert("카메라 인식 실패!");}
+            try {
+                await setupCamera();
+                video.play()
+            } catch { alert("카메라 인식 실패!"); }
 
             // Set up canvas for livestreaming
             canvas = document.getElementById('facecanvas');
