@@ -268,7 +268,13 @@ height: 100%;
 
 .return-home {
     margin-top: 20px;
-    
+    width: 60%;
+    height: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 60px;
+    align-items: center;
     text-align: center;
-    width: 80%;
+    vertical-align: middle;
+
 }
