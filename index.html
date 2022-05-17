@@ -342,7 +342,7 @@
             var msg = new SpeechSynthesisUtterance();
             //msg.voice = voices[12];
             msg.text = resultTitle;
-            msg.rate = 1.2;
+            msg.rate = 1.5;
             //msg.lang = 'ko-KR';
             window.speechSynthesis.speak(msg);
             //return new Promise(resolve => {msg.onend = resolve;});
@@ -402,8 +402,6 @@
                 'audio': false,
                 'video': {
                     facingMode: "environment",
-                    height: { ideal: 500 },
-                    width: { ideal: 500 },
                 },
             });
             video.srcObject = stream;
