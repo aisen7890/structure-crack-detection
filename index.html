@@ -130,7 +130,7 @@
             imgCanvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 
             const dataURL = imgCanvas.toDataURL();
-            img1.srcObject = dataURL;
+            img1.src = dataURL;
 
             await predict();
             await predict2();
