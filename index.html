@@ -92,7 +92,13 @@
 
 
 
-            window.requestAnimationFrame(loop);
+            //window.requestAnimationFrame(loop);
+            if(window.requestAnimationFrame){ window.requestAnimationFrame(loop);}
+            else if(window.webkitRequestAnimationFrame){ window.webkitRequestAnimationFrame(loop);}
+            else if(window.mozRequestAnimationFrame){ window.mozRequestAnimationFrame(loop);}
+            else if(window.oRequestAnimationFrame){ window.oRequestAnimationFrame(loop);}
+            else if(window.msRequestAnimationFrame){ window.msRequestAnimationFrame(loop);}
+            else { alert("지원하지 않는 브라우저!");}
 
             //document.getElementById("webcam-container").appendChild(webcam.canvas);
 
@@ -137,7 +143,13 @@
             resultsay();
             await delay(5000); //시간 조절은 여기서.
             imgCanvas.remove();
-            window.requestAnimationFrame(loop);
+            //window.requestAnimationFrame(loop);
+            if(window.requestAnimationFrame){ window.requestAnimationFrame(loop);}
+            else if(window.webkitRequestAnimationFrame){ window.webkitRequestAnimationFrame(loop);}
+            else if(window.mozRequestAnimationFrame){ window.mozRequestAnimationFrame(loop);}
+            else if(window.oRequestAnimationFrame){ window.oRequestAnimationFrame(loop);}
+            else if(window.msRequestAnimationFrame){ window.msRequestAnimationFrame(loop);}
+            else { alert("지원하지 않는 브라우저!");}
         }
 
 
@@ -425,8 +437,10 @@
 
         async function main() {
             // Set up front-facing camera
+            try{
             await setupCamera();
             video.play()
+            }catch{alert("카메라 인식 실패!");}
 
             // Set up canvas for livestreaming
             canvas = document.getElementById('facecanvas');
