@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인공지능 균열측정기 - 인공지능으로 균열이 위험한지 알아보세요</title>
+    <title>디지털 감리 보조 도구(균열 탐지)</title>
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -20,10 +20,10 @@
 </head>
 
 <body>
-    <h1 class="title">인공지능 균열위험도 판독기</h1>
-    <h2 class="subtitle">"자가진단을 통해 우리집이 안전한지 알아보아요.(아직 바닥은 못해요. ^ㅡ^)"</h2>
-    <h1 class="title">인공지능 지진균열위험도 판독기</h1>
-    <h2 class="subtitle">"지진으로 발생한 균열의 위험도를 판단할 수 있습니다."</h2>
+    <h1 class="title">디지털 감리 보조 도구(균열 탐지)</h1>
+    <h2 class="subtitle"></h2>
+    <h1 class="title">원하는 대상을 정 가운데로 위치해 주세요.</h1>
+    <h2 class="subtitle">"시작하기!를 누르고 5초 기다려 주세요."</h2>
     <div class="image-upload-wrap">
         <canvas id="facecanvas"></canvas>
 
@@ -83,10 +83,10 @@
 
         // Load the image model and setup the webcam
         async function init() {
+            
             abort = false;
 
-
-            const modelURL = URL + "model.json";
+            const modelURL = URL + "model.json"; //이 부분에서 5초간 대기 시간이 발생함.
             const metadataURL = URL + "metadata.json";
 
             const modelURL2 = URL2 + "model.json";
