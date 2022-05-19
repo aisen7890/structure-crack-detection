@@ -158,8 +158,8 @@
             const dataURL = imgCanvas.toDataURL();
             img1.src = dataURL;
 
-            await predict2(); //2번째 부터 시작한 이유가 있음. 
-
+            await predict2(); //처음 실행만 안됨. 어째서?
+            await predict2(); //여기부터 실행 잘됨. 
             await predict();
 
             resultsay();
